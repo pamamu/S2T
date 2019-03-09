@@ -1,0 +1,40 @@
+---
+- name: Portainer | docker container start
+  docker_container:
+    name: portainer
+    image: portainer/portainer
+    state: started
+    restart_policy: always
+    ports:
+      - "9000:9000"
+    volumes: /var/run/docker.sock:/var/run/docker.sock
+
+- name: Docker | Ensure user can use docker command without sudo
+  user:
+    name: "{{ docker_main_user }}"
+    group: docker
+
+- name: Vagrant | Set ansible configuration for root user
+  copy:
+    src: /vagrant/ansible/ansible.cfg
+    dest: /root/.ansible.cfg
+    owner: root
+    group: root
+    mode: 0777
+
+- name: Vagrant | Set ansible configuration for vagrant user
+  copy:
+    src: /vagrant/ansible/ansible.cfg
+    dest: /home/vagrant/.ansible.cfg
+    owner: vagrant
+    group: vagrant
+    mode: 0777
+
+- name: Create Shared folder
+  file:
+    path: /srv/shared_folder
+    state: directory
+
+- name: Start Docker Compose file with all services and resources
+  docker_service:
+    project_src: /srv/S2T/ansible/docker

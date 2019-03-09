@@ -1,0 +1,66 @@
+version: '3'
+services:
+  audio-process:
+    container_name: AudioProcess
+    build: ../../S2T_AudioProcess/.
+    hostname: AudioProcess
+    restart: always
+    volumes:
+      - shared_folder:/srv/shared_folder
+
+  g2p:
+    container_name: G2P
+    build: ../../S2T_G2P/.
+    hostname: G2P
+    restart: always
+    volumes:
+      - shared_folder:/srv/shared_folder
+
+  get-audio-trans:
+    container_name: GetAudiosTrans
+    build: ../../S2T_GetAudiosTrans/.
+    hostname: GetAudiosTrans
+    restart: always
+    volumes:
+      - shared_folder:/srv/shared_folder
+
+  speech-2-text:
+    container_name: Speech2Text
+    build: ../../S2T_Speech2Text/.
+    hostname: Speech2Text
+    restart: always
+    volumes:
+      - shared_folder:/srv/shared_folder
+
+  sphinx-base:
+    container_name: SphinxBase
+    build: ../../S2T_SPHINXBASE/.
+    hostname: SphinxBase
+    restart: always
+    volumes:
+      - shared_folder:/srv/shared_folder
+
+  srilm:
+    container_name: Srilm
+    build: ../../S2T_SRILM/.
+    hostname: Srilm
+    restart: always
+    volumes:
+      - shared_folder:/srv/shared_folder
+
+  training:
+    container_name: Training
+    build: ../../S2T_Training/.
+    hostname: Training
+    restart: always
+    volumes:
+      - shared_folder:/srv/shared_folder
+
+
+volumes:
+  shared_folder:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/shared_folder

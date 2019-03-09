@@ -1,0 +1,11 @@
+---
+- hosts: all
+
+  vars_files:
+    - vars/global.yml
+
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - s2t.common
+    - viasite-ansible.zsh

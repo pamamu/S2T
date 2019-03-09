@@ -1,0 +1,10 @@
+---
+pip_install_packages:
+  - name: docker
+  - name: docker-compose
+  - name: setuptools
+    state: latest
+
+## Docker post-installation parameters ##
+docker_main_user: "vagrant"
+
