@@ -19,3 +19,6 @@
 [submodule "S2T_Training"]
 	path = S2T_Training
 	url = https://github.com/pamamu/S2T_Training.git
+[submodule "S2T_SRILM"]
+	path = S2T_SRILM
+	url = https://github.com/pamamu/S2T_SRILM.git
