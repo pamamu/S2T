@@ -2,6 +2,6 @@
 ip_address: 192.168.4.95
 vagrant_box: geerlingguy/centos7
 vm_name: s2t.dev
-vm_cpu_count: 2
+vm_cpu_count: 3
 vm_memory: 2048
 vm_hostname: pablomacias.s2t
