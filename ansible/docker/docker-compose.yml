@@ -1,8 +1,18 @@
 version: '3'
 services:
+  main:
+    container_name: MainContainer
+    build: ../../S2T_MainController/.
+    image: pablomacias/s2t_main-controller
+    hostname: MainController
+    restart: always
+    volumes:
+      - shared_folder:/srv/shared_folder
+
   audio-process:
     container_name: AudioProcess
     build: ../../S2T_AudioProcess/.
+    image: pablomacias/s2t_audio-process
     hostname: AudioProcess
     restart: always
     volumes:
@@ -11,6 +21,7 @@ services:
   g2p:
     container_name: G2P
     build: ../../S2T_G2P/.
+    image: pablomacias/s2t_g2p
     hostname: G2P
     restart: always
     volumes:
@@ -19,6 +30,7 @@ services:
   get-audio-trans:
     container_name: GetAudiosTrans
     build: ../../S2T_GetAudiosTrans/.
+    image: pablomacias/s2t_get-audio-trans
     hostname: GetAudiosTrans
     restart: always
     volumes:
@@ -27,6 +39,7 @@ services:
   speech-2-text:
     container_name: Speech2Text
     build: ../../S2T_Speech2Text/.
+    image: pablomacias/s2t_speech-2-text
     hostname: Speech2Text
     restart: always
     volumes:
@@ -35,6 +48,7 @@ services:
   sphinx-base:
     container_name: SphinxBase
     build: ../../S2T_SPHINXBASE/.
+    image: pablomacias/s2t_sphinx-base
     hostname: SphinxBase
     restart: always
     volumes:
@@ -43,6 +57,7 @@ services:
   srilm:
     container_name: Srilm
     build: ../../S2T_SRILM/.
+    image: pablomacias/s2t_srilm
     hostname: Srilm
     restart: always
     volumes:
@@ -51,6 +66,7 @@ services:
   training:
     container_name: Training
     build: ../../S2T_Training/.
+    image: pablomacias/s2t_training
     hostname: Training
     restart: always
     volumes:
