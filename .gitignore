@@ -116,3 +116,5 @@ classes/
 ansible/roles/*
 !ansible/roles/s2t*
 
+
+.DS_Store
