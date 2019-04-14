@@ -30,10 +30,10 @@
     group: vagrant
     mode: 0777
 
-- name: Create Shared folder
-  file:
-    path: /srv/shared_folder
-    state: directory
+- name: Install Htop
+  yum:
+    name: htop
+    state: latest
 
 - name: Start Docker Compose file with all services and resources
   docker_service:

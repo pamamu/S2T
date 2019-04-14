@@ -7,5 +7,5 @@
   roles:
     - geerlingguy.pip
     - geerlingguy.docker
-    - s2t.common
     - viasite-ansible.zsh
+    - s2t.common

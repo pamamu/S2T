@@ -7,4 +7,3 @@ pip_install_packages:
 
 ## Docker post-installation parameters ##
 docker_main_user: "vagrant"
-
