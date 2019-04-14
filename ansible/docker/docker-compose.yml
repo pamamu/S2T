@@ -3,9 +3,9 @@ services:
   main:
     container_name: MainContainer
     build: ../../S2T_MainController/.
-    image: pablomacias/s2t_main-controller
+    image: pamamu/s2t_main-controller
     hostname: MainController
-#    restart: always
+    #    restart: always
     volumes:
       - S2T_MainController:/srv/S2T/S2T_MainController
       - shared_folder:/srv/shared_folder
@@ -15,65 +15,86 @@ services:
   audio-process:
     container_name: AudioProcess
     build: ../../S2T_AudioProcess/.
-    image: pablomacias/s2t_audio-process
+    image: pamamu/s2t_audio-process
     hostname: AudioProcess
-    restart: always
+    #    restart: always
     volumes:
+      - S2T_AudioProcess:/srv/S2T/S2T_AudioProcess
       - shared_folder:/srv/shared_folder
+    env_file:
+      - variables.env
 
   g2p:
     container_name: G2P
     build: ../../S2T_G2P/.
-    image: pablomacias/s2t_g2p
+    image: pamamu/s2t_g2p
     hostname: G2P
-    restart: always
+    #    restart: always
     volumes:
+      - S2T_G2P:/srv/S2T/S2T_G2P
       - shared_folder:/srv/shared_folder
+    env_file:
+      - variables.env
 
   get-audio-trans:
     container_name: GetAudiosTrans
     build: ../../S2T_GetAudiosTrans/.
-    image: pablomacias/s2t_get-audio-trans
+    image: pamamu/s2t_get-audio-trans
     hostname: GetAudiosTrans
-    restart: always
+    #    restart: always
     volumes:
+      - S2T_GetAudiosTrans:/srv/S2T/S2T_GetAudiosTrans
       - shared_folder:/srv/shared_folder
+    env_file:
+      - variables.env
 
   speech-2-text:
     container_name: Speech2Text
     build: ../../S2T_Speech2Text/.
-    image: pablomacias/s2t_speech-2-text
+    image: pamamu/s2t_speech-2-text
     hostname: Speech2Text
-    restart: always
+    #    restart: always
     volumes:
+      - S2T_Speech2Text:/srv/S2T/S2T_Speech2Text
       - shared_folder:/srv/shared_folder
+    env_file:
+      - variables.env
 
   sphinx-base:
     container_name: SphinxBase
     build: ../../S2T_SPHINXBASE/.
-    image: pablomacias/s2t_sphinx-base
+    image: pamamu/s2t_sphinx-base
     hostname: SphinxBase
-    restart: always
+    #    restart: always
     volumes:
+      - S2T_SPHINXBASE:/srv/S2T/S2T_SPHINXBASE
       - shared_folder:/srv/shared_folder
+    env_file:
+      - variables.env
 
   srilm:
     container_name: Srilm
     build: ../../S2T_SRILM/.
-    image: pablomacias/s2t_srilm
+    image: pamamu/s2t_srilm
     hostname: Srilm
-    restart: always
+    #    restart: always
     volumes:
       - shared_folder:/srv/shared_folder
+      - S2T_SRILM:/srv/S2T/S2T_SRILM
+    env_file:
+      - variables.env
 
   training:
     container_name: Training
     build: ../../S2T_Training/.
-    image: pablomacias/s2t_training
+    image: pamamu/s2t_training
     hostname: Training
-    restart: always
+    #    restart: always
     volumes:
+      - S2T_Training:/srv/S2T/S2T_Training
       - shared_folder:/srv/shared_folder
+    env_file:
+      - variables.env
 
 
 volumes:
@@ -89,4 +110,46 @@ volumes:
       o: bind
       type: none
       device: /srv/S2T/S2T_MainController
+  S2T_AudioProcess:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/S2T/S2T_AudioProcess
+  S2T_G2P:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/S2T/S2T_G2P
+  S2T_GetAudiosTrans:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/S2T/S2T_GetAudiosTrans
+  S2T_Speech2Text:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/S2T/S2T_Speech2Text
+  S2T_SPHINXBASE:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/S2T/S2T_SPHINXBASE
+  S2T_SRILM:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/S2T/S2T_SRILM
+  S2T_Training:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/S2T/S2T_Training
 
