@@ -12,7 +12,8 @@ Vagrant.configure( VAGRANTFILE_API_VERSION ) do |config|
   config.ssh.insert_key = false
 
   config.vm.synced_folder "../S2T/", "/srv/S2T/", id: "S2T"
-  
+  config.vm.synced_folder "shared_folder/", "/srv/shared_folder/", id: "shared_folder"
+
   config.vm.provider :virtualbox do |v|
     v.name = settings['vm_name']
     v.memory = settings['vm_memory']
