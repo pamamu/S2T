@@ -5,9 +5,12 @@ services:
     build: ../../S2T_MainController/.
     image: pablomacias/s2t_main-controller
     hostname: MainController
-    restart: always
+#    restart: always
     volumes:
+      - S2T_MainController:/srv/S2T/S2T_MainController
       - shared_folder:/srv/shared_folder
+    env_file:
+      - variables.env
 
   audio-process:
     container_name: AudioProcess
@@ -80,3 +83,10 @@ volumes:
       o: bind
       type: none
       device: /srv/shared_folder
+  S2T_MainController:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/S2T/S2T_MainController
+
