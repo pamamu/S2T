@@ -9,6 +9,8 @@ services:
     volumes:
       - S2T_MainController:/srv/S2T/S2T_MainController
       - shared_folder:/srv/shared_folder
+    ports:
+      - "9001:9001"
     env_file:
       - variables.env
 
