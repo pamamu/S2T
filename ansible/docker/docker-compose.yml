@@ -1,7 +1,7 @@
 version: '3'
 services:
   main:
-    container_name: MainContainer
+    container_name: MainController
     build: ../../S2T_MainController/.
     image: pamamu/s2t_main-controller
     hostname: MainController
@@ -19,6 +19,8 @@ services:
     build: ../../S2T_AudioProcess/.
     image: pamamu/s2t_audio-process
     hostname: AudioProcess
+    depends_on:
+      - "main"
     #    restart: always
     volumes:
       - S2T_AudioProcess:/srv/S2T/S2T_AudioProcess
@@ -31,6 +33,8 @@ services:
     build: ../../S2T_G2P/.
     image: pamamu/s2t_g2p
     hostname: G2P
+    depends_on:
+      - "main"
     #    restart: always
     volumes:
       - S2T_G2P:/srv/S2T/S2T_G2P
@@ -43,6 +47,8 @@ services:
     build: ../../S2T_GetAudiosTrans/.
     image: pamamu/s2t_get-audio-trans
     hostname: GetAudiosTrans
+    depends_on:
+      - "main"
     #    restart: always
     volumes:
       - S2T_GetAudiosTrans:/srv/S2T/S2T_GetAudiosTrans
@@ -55,6 +61,8 @@ services:
     build: ../../S2T_Speech2Text/.
     image: pamamu/s2t_speech-2-text
     hostname: Speech2Text
+    depends_on:
+      - "main"
     #    restart: always
     volumes:
       - S2T_Speech2Text:/srv/S2T/S2T_Speech2Text
@@ -67,6 +75,8 @@ services:
     build: ../../S2T_SPHINXBASE/.
     image: pamamu/s2t_sphinx-base
     hostname: SphinxBase
+    depends_on:
+      - "main"
     #    restart: always
     volumes:
       - S2T_SPHINXBASE:/srv/S2T/S2T_SPHINXBASE
@@ -79,6 +89,8 @@ services:
     build: ../../S2T_SRILM/.
     image: pamamu/s2t_srilm
     hostname: Srilm
+    depends_on:
+      - "main"
     #    restart: always
     volumes:
       - shared_folder:/srv/shared_folder
@@ -91,6 +103,8 @@ services:
     build: ../../S2T_Training/.
     image: pamamu/s2t_training
     hostname: Training
+    depends_on:
+      - "main"
     #    restart: always
     volumes:
       - S2T_Training:/srv/S2T/S2T_Training
