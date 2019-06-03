@@ -120,3 +120,4 @@ ansible/roles/*
 .DS_Store
 input_audios
 shared_folder
+.vscode
