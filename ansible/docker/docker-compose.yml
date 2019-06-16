@@ -5,7 +5,6 @@ services:
     build: ../../S2T_MainController/.
     image: pamamu/s2t_main-controller
     hostname: MainController
-    #    restart: always
     volumes:
       - S2T_MainController:/srv/S2T/S2T_MainController
       - shared_folder:/srv/shared_folder
@@ -21,7 +20,6 @@ services:
     hostname: AudioProcess
     depends_on:
       - "main"
-    #    restart: always
     volumes:
       - S2T_AudioProcess:/srv/S2T/S2T_AudioProcess
       - shared_folder:/srv/shared_folder
@@ -35,7 +33,6 @@ services:
     hostname: G2P
     depends_on:
       - "main"
-    #    restart: always
     volumes:
       - S2T_G2P:/srv/S2T/S2T_G2P
       - shared_folder:/srv/shared_folder
@@ -49,7 +46,6 @@ services:
     hostname: GetAudiosTrans
     depends_on:
       - "main"
-    #    restart: always
     volumes:
       - S2T_GetAudiosTrans:/srv/S2T/S2T_GetAudiosTrans
       - shared_folder:/srv/shared_folder
@@ -63,7 +59,6 @@ services:
     hostname: Speech2Text
     depends_on:
       - "main"
-    #    restart: always
     volumes:
       - S2T_Speech2Text:/srv/S2T/S2T_Speech2Text
       - shared_folder:/srv/shared_folder
@@ -77,7 +72,6 @@ services:
     hostname: SphinxBase
     depends_on:
       - "main"
-    #    restart: always
     volumes:
       - S2T_SPHINXBASE:/srv/S2T/S2T_SPHINXBASE
       - shared_folder:/srv/shared_folder
@@ -91,7 +85,6 @@ services:
     hostname: Srilm
     depends_on:
       - "main"
-    #    restart: always
     volumes:
       - shared_folder:/srv/shared_folder
       - S2T_SRILM:/srv/S2T/S2T_SRILM
@@ -105,7 +98,6 @@ services:
     hostname: Training
     depends_on:
       - "main"
-    #    restart: always
     volumes:
       - S2T_Training:/srv/S2T/S2T_Training
       - shared_folder:/srv/shared_folder
