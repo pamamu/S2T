@@ -102,4 +102,22 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-.idea/
+
+\.idea/
+\.gradle/
+\data/
+\build/
+*.iml
+classes/
+.vagrant/
+*.bak
+*.retry
+*.galaxy_install_info
+ansible/roles/*
+!ansible/roles/s2t*
+
+
+.DS_Store
+input_audios
+shared_folder
+.vscode

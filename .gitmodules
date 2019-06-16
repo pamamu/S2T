@@ -1,9 +1,6 @@
 [submodule "S2T_MainController"]
 	path = S2T_MainController
 	url = https://github.com/pamamu/S2T_MainController.git
-[submodule "S2T_SRILM"]
-	path = S2T_SRILM
-	url = https://github.com/pamamu/S2T_SRILM.git
 [submodule "S2T_SPHINXBASE"]
 	path = S2T_SPHINXBASE
 	url = https://github.com/pamamu/S2T_SPHINXBASE.git
@@ -22,3 +19,6 @@
 [submodule "S2T_Training"]
 	path = S2T_Training
 	url = https://github.com/pamamu/S2T_Training.git
+[submodule "S2T_SRILM"]
+	path = S2T_SRILM
+	url = https://github.com/pamamu/S2T_SRILM.git
