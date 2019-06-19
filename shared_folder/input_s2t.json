@@ -1,0 +1,6 @@
+{
+  "audio_path": "/srv/shared_folder/audio35.wav",
+  "acoustic_model_path": "/srv/shared_folder/originales/es-acoustic",
+  "dictionary_path": "/srv/shared_folder/originales/es.dict",
+  "language_model_path": "/srv/shared_folder/es.lm.bin"
+}
