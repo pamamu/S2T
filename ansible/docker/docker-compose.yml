@@ -1,4 +1,4 @@
-version: '3'
+version: '2.4'
 services:
   main:
     container_name: MainController
@@ -10,6 +10,11 @@ services:
       - shared_folder:/srv/shared_folder
     ports:
       - "9001:9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9001"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
     env_file:
       - variables.env
 
@@ -19,7 +24,8 @@ services:
     image: pamamu/s2t_audio-process
     hostname: AudioProcess
     depends_on:
-      - "main"
+      main:
+        condition: service_healthy
     volumes:
       - S2T_AudioProcess:/srv/S2T/S2T_AudioProcess
       - shared_folder:/srv/shared_folder
@@ -32,7 +38,8 @@ services:
     image: pamamu/s2t_g2p
     hostname: G2P
     depends_on:
-      - "main"
+      main:
+        condition: service_healthy
     volumes:
       - S2T_G2P:/srv/S2T/S2T_G2P
       - shared_folder:/srv/shared_folder
@@ -45,7 +52,8 @@ services:
     image: pamamu/s2t_get-audio-trans
     hostname: GetAudiosTrans
     depends_on:
-      - "main"
+      main:
+        condition: service_healthy
     volumes:
       - S2T_GetAudiosTrans:/srv/S2T/S2T_GetAudiosTrans
       - shared_folder:/srv/shared_folder
@@ -58,7 +66,8 @@ services:
     image: pamamu/s2t_speech-2-text
     hostname: Speech2Text
     depends_on:
-      - "main"
+      main:
+        condition: service_healthy
     volumes:
       - S2T_Speech2Text:/srv/S2T/S2T_Speech2Text
       - shared_folder:/srv/shared_folder
@@ -71,7 +80,8 @@ services:
     image: pamamu/s2t_sphinx-base
     hostname: SphinxBase
     depends_on:
-      - "main"
+      main:
+        condition: service_healthy
     volumes:
       - S2T_SPHINXBASE:/srv/S2T/S2T_SPHINXBASE
       - shared_folder:/srv/shared_folder
@@ -84,7 +94,8 @@ services:
     image: pamamu/s2t_srilm
     hostname: Srilm
     depends_on:
-      - "main"
+      main:
+        condition: service_healthy
     volumes:
       - shared_folder:/srv/shared_folder
       - S2T_SRILM:/srv/S2T/S2T_SRILM
@@ -97,7 +108,8 @@ services:
     image: pamamu/s2t_training
     hostname: Training
     depends_on:
-      - "main"
+      main:
+        condition: service_healthy
     volumes:
       - S2T_Training:/srv/S2T/S2T_Training
       - shared_folder:/srv/shared_folder
